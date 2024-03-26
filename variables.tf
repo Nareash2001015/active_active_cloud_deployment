@@ -22,11 +22,3 @@ variable "acr_name" {
   type        = string
   description = "ACR name"
 }
-variable "storage_account_name" {
-  type        = string
-  description = "Storage account to store the tfstate"
-}
-variable "storage_key" {
-  type        = string
-  description = "Storage key"
-}

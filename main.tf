@@ -1,22 +1,3 @@
-provider "azurerm" {
-  features {}
-}
-
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "3.62.1"
-    }
-  }
-  backend "azurerm" {
-    storage_account_name = var.storage_account_name
-    container_name       = "terraform"
-    key                  = "terraform.tfstate"
-    access_key           = var.storage_key
-  }
-}
-
 resource "azurerm_resource_group" "aks-rg" {
   name     = var.resource_group_name
   location = var.location
