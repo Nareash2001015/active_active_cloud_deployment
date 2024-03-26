@@ -4,7 +4,7 @@ provider "azurerm" {
 
 terraform {
   required_providers {
-    azurerm = "3.97.1"
+    azurerm = "2.52.0"
   }
   backend "azurerm" {
     resource_group_name = "rg-cst-api-app"
