@@ -4,10 +4,7 @@ provider "azurerm" {
 
 terraform {
   required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "3.62.1"
-    }
+    azurerm = "2.52.0"
   }
   backend "azurerm" {
     resource_group_name = "rg-cst-api-app"
