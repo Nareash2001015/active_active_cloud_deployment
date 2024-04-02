@@ -67,16 +67,16 @@ Common prefix prepended to Kubernetes resources of this chart
 {{- define "image" }}
 {{- $imageName := .deployment.imageName }}
 {{- $imageTag := .deployment.imageTag | default "" }}
-{{- if or (eq .Values.wso2.subscription.username "") (eq .Values.wso2.subscription.password "") -}}
-{{- $dockerRegistry := .deployment.dockerRegistry | default "wso2" }}
-image: {{ $dockerRegistry }}/{{ $imageName }}{{- if not (eq $imageTag "") }}{{- printf ":%s" $imageTag -}}{{- end }}
+{{- if or (eq .Values.azure.subscription.username "") (eq .Values.azure.subscription.password "") -}}
+{{- $containerRegistry := .deployment.containerRegistry | default "wso2" }}
+image: {{ $containerRegistry }}/{{ $imageName }}{{- if not (eq $imageTag "") }}{{- printf ":%s" $imageTag -}}{{- end }}
 {{- else }}
-{{- $dockerRegistry := .deployment.dockerRegistry | default "docker.wso2.com" }}
+{{- $containerRegistry := .deployment.containerRegistry | default "cstimage.azurecr.io" }}
 {{- $parts := len (split "." $imageTag) }}
-{{- if and (eq $parts 3) (eq $dockerRegistry "docker.wso2.com") }}
-image: {{ $dockerRegistry }}/{{ $imageName }}{{- if not (eq $imageTag "") }}:{{ $imageTag }}.0{{- end }}
+{{- if and (eq $parts 3) (eq $containerRegistry "cstimage.azurecr.io") }}
+image: {{ $containerRegistry }}/{{ $imageName }}{{- if not (eq $imageTag "") }}:{{ $imageTag }}.0{{- end }}
 {{- else }}
-image: {{ $dockerRegistry }}/{{ $imageName }}{{- if not (eq $imageTag "") }}:{{ $imageTag }}{{- end }}
+image: {{ $containerRegistry }}/{{ $imageName }}{{- if not (eq $imageTag "") }}:{{ $imageTag }}{{- end }}
 {{- end -}}
 {{- end -}}
 {{- end -}}

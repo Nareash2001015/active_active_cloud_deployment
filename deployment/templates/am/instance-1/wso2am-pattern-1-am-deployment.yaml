@@ -119,7 +119,7 @@ spec:
       {{- if .Values.wso2.deployment.am.imagePullSecrets }}
       imagePullSecrets:
         - name: {{ .Values.wso2.deployment.am.imagePullSecrets }}
-      {{- else if and (not (eq .Values.wso2.subscription.username "")) (not (eq .Values.wso2.subscription.password "")) }}
+      {{- else if and (not (eq .Values.azure.subscription.username "")) (not (eq .Values.azure.subscription.password "")) }}
       imagePullSecrets:
         - name: {{ template "am-pattern-1.resource.prefix" . }}-am-wso2-private-registry-creds
       {{ end }}
