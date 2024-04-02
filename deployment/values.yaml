@@ -58,7 +58,7 @@ wso2:
     am:
       # Container image configurations
       # If a custom image must be used, uncomment 'containerRegistry' and provide its value
-      containerRegistry: "cstimage.azurecr.io"
+      containerRegistry: "cstimage.azurecr.io" 
       imageName: ""
       imageTag: "latest"
       # Refer to the Kubernetes documentation on updating images (https://kubernetes.io/docs/concepts/containers/images/#updating-images)
