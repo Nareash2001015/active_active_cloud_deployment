@@ -1,5 +1,5 @@
 module "resource-group" {
-  source              = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azurerm/Resource-Group?ref=v0.5.0"
+  source              = "./resource-group"
   resource_group_name = var.resource_group_name
   location            = var.location
   tags                = local.default_tags
