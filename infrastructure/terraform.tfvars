@@ -8,3 +8,4 @@ system_node_count   = 2
 deployment_name     = "__deploymentName__"
 # deployment_name     = "bnym-delployment"
 environment         = "dev"
+public_ssh_key_path = "__publicSshKeyPath__"
