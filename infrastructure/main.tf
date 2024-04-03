@@ -17,7 +17,6 @@ module "virtual-network" {
 
 module "aks_kubernetes_cluster" {
   source                                               = "./AKS-Generic"
-  aks_admin_username                                   = "wso2_user"
   aks_cluster_dns_prefix                               = "wso2apim"
   aks_cluster_name                                     = var.cluster_name
   aks_load_balancer_subnet_name                        = join("-", ["aks-load-balancer", var.environment, var.location, "sn"])
@@ -28,7 +27,6 @@ module "aks_kubernetes_cluster" {
   aks_node_pool_subnet_name                            = join("-", ["aks-node-pool", var.environment, var.location, "sn"])
   aks_node_pool_subnet_network_security_group_name     = join("-", ["aks-node-pool", var.environment, var.location, "nsg"])
   aks_node_pool_subnet_route_table_name                = "wso2_route_table" # You may need to adjust this if it is coming from a different module
-  aks_public_ssh_key_path                              = "~/.ssh/aks_rsa.pub"
   aks_resource_group_name                              = module.resource-group.resource_group_name
   azure_policy_enabled                                 = true
   default_node_pool_availability_zones                 = ["1", "2", "3"]
