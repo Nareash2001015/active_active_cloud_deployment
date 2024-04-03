@@ -27,12 +27,12 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     azurerm_subnet.aks_node_pool_subnet
   ]
 
-  linux_profile {
-    admin_username = var.aks_admin_username
-    ssh_key {
-      key_data = file(var.aks_public_ssh_key_path)
-    }
-  }
+  # linux_profile {
+  #   admin_username = var.aks_admin_username
+  #   ssh_key {
+  #     key_data = file(var.aks_public_ssh_key_path)
+  #   }
+  # }
 
   default_node_pool {
     name                         = join("", ["aksnp", var.default_node_pool_name])
