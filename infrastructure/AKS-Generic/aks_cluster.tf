@@ -10,7 +10,7 @@
 # --------------------------------------------------------------------------------------
 
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
-  name                                = join("-", ["aks", var.aks_cluster_name])
+  name                                = var.aks_cluster_name
   location                            = var.location
   resource_group_name                 = var.aks_resource_group_name
   dns_prefix                          = join("-", ["aks", var.aks_cluster_dns_prefix])

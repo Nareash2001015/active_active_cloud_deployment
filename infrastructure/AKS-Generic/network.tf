@@ -44,12 +44,12 @@ resource "azurerm_subnet" "aks_node_pool_subnet" {
 resource "azurerm_network_security_group" "aks_node_pool_subnet_nsg" {
   location            = var.location
   name                = join("-", ["nsg", var.aks_node_pool_subnet_network_security_group_name])
-  resource_group_name = local.virtual_network_resource_group_name
+  resource_group_name = var.aks_resource_group_name
 }
 
 resource "azurerm_network_security_rule" "aks_node_pool_subnet_nsg_rules" {
   for_each                                   = var.aks_node_pool_subnet_nsg_rules
-  resource_group_name                        = local.virtual_network_resource_group_name
+  resource_group_name                        = var.aks_resource_group_name
   network_security_group_name                = azurerm_network_security_group.aks_node_pool_subnet_nsg.name
   name                                       = each.value.name
   description                                = each.value.description
@@ -84,7 +84,7 @@ resource "azurerm_subnet_network_security_group_association" "aks_node_pool_subn
 
 resource "azurerm_subnet" "internal_load_balancer_subnet" {
   name                                      = join("-", ["snet", var.aks_load_balancer_subnet_name])
-  resource_group_name                       = local.virtual_network_resource_group_name
+  resource_group_name                       = var.aks_resource_group_name
   virtual_network_name                      = var.virtual_network_name
   address_prefixes                          = [var.internal_loadbalancer_subnet_address_prefix]
   service_endpoints                         = ["Microsoft.Sql", "Microsoft.ContainerRegistry", "Microsoft.EventHub", "Microsoft.Storage"]
@@ -94,12 +94,12 @@ resource "azurerm_subnet" "internal_load_balancer_subnet" {
 resource "azurerm_network_security_group" "internal_load_balancer_subnet_nsg" {
   location            = var.location
   name                = join("-", ["nsg", var.aks_load_balancer_subnet_network_security_group_name])
-  resource_group_name = var.virtual_network_resource_group_name
+  resource_group_name = var.aks_resource_group_name
 }
 
 resource "azurerm_network_security_rule" "aks_load_balancer_subnet_nsg_rules" {
   for_each                                   = var.aks_load_balancer_subnet_nsg_rules
-  resource_group_name                        = local.virtual_network_resource_group_name
+  resource_group_name                        = var.aks_resource_group_name
   network_security_group_name                = azurerm_network_security_group.internal_load_balancer_subnet_nsg.name
   name                                       = each.value.name
   description                                = each.value.description
