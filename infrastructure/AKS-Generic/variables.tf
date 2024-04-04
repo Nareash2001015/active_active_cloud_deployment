@@ -139,16 +139,6 @@ variable "aks_load_balancer_subnet_nsg_rules" {
   }))
 }
 
-variable "aks_node_pool_subnet_routes" {
-  default     = {}
-  description = "Routes for aks nodepool subnet"
-  type = map(object({
-    address_prefix         = string
-    name                   = string
-    next_hop_type          = string
-    next_hop_in_ip_address = string
-  }))
-}
 
 # Global AKS Configuration
 variable "aks_admin_username" {
@@ -159,12 +149,6 @@ variable "aks_admin_username" {
 variable "aks_public_ssh_key_path" {
   description = "Public key path for AKS Nodes"
   type        = string
-}
-
-variable "aks_admin_group_object_ids" {
-  default     = []
-  description = "Group IDs of AKS Admins"
-  type        = list(string)
 }
 
 variable "outbound_type" {
@@ -215,12 +199,6 @@ variable "sku_tier" {
   default     = "Free"
   description = "Tier of the API Server"
   type        = string
-}
-
-variable "aks_azure_rbac_enabled" {
-  default     = false
-  description = "Role based access control based on azure AD enabled"
-  type        = bool
 }
 
 # Default Nodepool Configurations
@@ -301,6 +279,17 @@ variable "internal_load_balancer_subnet_enforce_private_link_endpoint_network_po
   default     = false
   description = "Enable or Disable network policies for the private link endpoint on the internal load balancer subnet"
   type        = bool
+}
+
+variable "aks_node_pool_subnet_routes" {
+  default     = {}
+  description = "Routes for aks nodepool subnet"
+  type = map(object({
+    address_prefix         = string
+    name                   = string
+    next_hop_type          = string
+    next_hop_in_ip_address = string
+  }))
 }
 
 # variable "default_node_pool_temporary_name_for_rotation" {
