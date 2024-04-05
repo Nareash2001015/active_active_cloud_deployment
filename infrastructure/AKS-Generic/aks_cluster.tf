@@ -8,7 +8,6 @@
 # You may not alter or remove any copyright or other notice from copies of this content.
 #
 # --------------------------------------------------------------------------------------
-
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
   name                                = var.aks_cluster_name
   location                            = var.location
@@ -19,7 +18,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   sku_tier                            = var.sku_tier
   private_cluster_enabled             = var.private_cluster_enabled
   private_cluster_public_fqdn_enabled = var.private_cluster_public_fqdn_enable
-  role_based_access_control_enabled   = true
+  # role_based_access_control_enabled   = var.aks_azure_rbac_enabled
   azure_policy_enabled                = var.azure_policy_enabled
   http_application_routing_enabled    = var.http_application_routing_enabled
   tags                                = var.tags
@@ -30,7 +29,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   linux_profile {
     admin_username = var.aks_admin_username
     ssh_key {
-      key_data = file(var.aks_public_ssh_key_path)
+      key_data = jsondecode(azapi_resource_action.ssh_public_key_gen.output).publicKey
     }
   }
 

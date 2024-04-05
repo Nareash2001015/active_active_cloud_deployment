@@ -146,10 +146,6 @@ variable "aks_admin_username" {
   type        = string
 }
 
-variable "aks_public_ssh_key_path" {
-  description = "Public key path for AKS Nodes"
-  type        = string
-}
 
 variable "outbound_type" {
   default     = "userDefinedRouting"
@@ -291,6 +287,12 @@ variable "aks_node_pool_subnet_routes" {
     next_hop_in_ip_address = string
   }))
 }
+
+# variable "aks_azure_rbac_enabled" {
+#   default     = false
+#   description = "Role based access control based on azure AD enabled"
+#   type        = bool
+# }
 
 # variable "default_node_pool_temporary_name_for_rotation" {
 #   description = "it's just a temp value used to cycle the system node pool of the cluster. So that value will only be used if any of the mentioned properties changes. Therefore, the logic you are looking for is there by default"

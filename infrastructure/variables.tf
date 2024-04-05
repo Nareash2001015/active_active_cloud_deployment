@@ -30,6 +30,6 @@ variable "deployment_name" {
 }
 
 variable "public_ssh_key_path" {
-  type = string
+  type        = string
   description = "aks ssh key path"
 }
