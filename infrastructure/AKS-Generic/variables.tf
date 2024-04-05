@@ -146,6 +146,10 @@ variable "aks_admin_username" {
   type        = string
 }
 
+variable "aks_public_ssh_key_path" {
+  description = "Public key path for AKS Nodes"
+  type        = string
+}
 
 variable "outbound_type" {
   default     = "userDefinedRouting"
