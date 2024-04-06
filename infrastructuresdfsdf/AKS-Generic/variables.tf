@@ -141,15 +141,15 @@ variable "aks_load_balancer_subnet_nsg_rules" {
 
 
 # Global AKS Configuration
-variable "aks_admin_username" {
-  description = "Admin Username for AKS nodes"
-  type        = string
-}
+# variable "aks_admin_username" {
+#   description = "Admin Username for AKS nodes"
+#   type        = string
+# }
 
-variable "aks_public_ssh_key_path" {
-  description = "Public key path for AKS Nodes"
-  type        = string
-}
+# variable "aks_public_ssh_key_path" {
+#   description = "Public key path for AKS Nodes"
+#   type        = string
+# }
 
 variable "outbound_type" {
   default     = "userDefinedRouting"

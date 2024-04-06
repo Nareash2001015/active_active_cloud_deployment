@@ -29,7 +29,7 @@ variable "deployment_name" {
   description = "which customer deployment"
 }
 
-variable "public_ssh_key_path" {
-  type        = string
-  description = "aks ssh key path"
-}
+# variable "public_ssh_key_path" {
+#   type        = string
+#   description = "aks ssh key path"
+# }

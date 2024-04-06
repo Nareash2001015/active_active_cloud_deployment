@@ -21,8 +21,8 @@ module "aks_kubernetes_cluster" {
   aks_cluster_name                                     = var.cluster_name
   aks_load_balancer_subnet_name                        = join("-", ["aks-load-balancer", var.environment, var.location, "sn"])
   aks_load_balancer_subnet_network_security_group_name = join("-", ["aks-load-balancer", var.environment, var.location, "nsg"])
-  aks_public_ssh_key_path                              = var.public_ssh_key_path
-  aks_admin_username                                   = "wso2_user"
+  # aks_public_ssh_key_path                              = var.public_ssh_key_path
+  # aks_admin_username                                   = "wso2_user"
   internal_loadbalancer_subnet_address_prefix          = "10.0.1.0/24"
   aks_node_pool_resource_group_name                    = module.resource-group.resource_group_name
   aks_node_pool_subnet_address_prefix                  = "10.0.2.0/24"
@@ -46,18 +46,7 @@ module "aks_kubernetes_cluster" {
   dns_service_ip                                       = "10.0.3.3"
   docker_bridge_cidr                                   = "10.0.4.0/24"
   kubernetes_version                                   = "1.27.7"
-  virtual_network_name                                 = module.virtual-network.virtual_network_name
-  location                                             = var.location
-  virtual_network_resource_group_name                  = module.resource-group.resource_group_name
-  aks_node_pool_subnet_routes = {
-    route1 = {
-      name                   = "Default"
-      address_prefix         = "0.0.0.0/0"
-      next_hop_type          = "VirtualAppliance"
-      next_hop_in_ip_address = "10.0.10.10"
-    }
-  }
-  outbound_type = "loadBalancer"
+  
 }
 
 module "custom-nodepool" {

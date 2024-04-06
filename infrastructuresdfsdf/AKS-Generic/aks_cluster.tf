@@ -26,12 +26,12 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     azurerm_subnet.aks_node_pool_subnet
   ]
 
-  linux_profile {
-    admin_username = var.aks_admin_username
-    ssh_key {
-      key_data = file(var.aks_public_ssh_key_path)
-    }
-  }
+  # linux_profile {
+  #   admin_username = var.aks_admin_username
+  #   ssh_key {
+  #     key_data = file(var.aks_public_ssh_key_path)
+  #   }
+  # }
 
   default_node_pool {
     name                         = join("", ["aksnp", var.default_node_pool_name])
@@ -46,8 +46,8 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     min_count                    = var.default_node_pool_min_count
     max_pods                     = var.default_node_pool_max_pods
     orchestrator_version         = var.default_node_pool_orchestrator_version
-    enable_node_public_ip        = false
-    only_critical_addons_enabled = var.default_node_pool_only_critical_addons_enabled
+    # enable_node_public_ip        = false
+    # only_critical_addons_enabled = var.default_node_pool_only_critical_addons_enabled
     # temporary_name_for_rotation = var.default_node_pool_temporary_name_for_rotation
   }
 
