@@ -26,7 +26,7 @@ terraform {
     }
   }
 
-# Terraform State Storage to Azure Storage Container
+  # Terraform State Storage to Azure Storage Container
   backend "azurerm" {
     resource_group_name  = "rg-cst-api-app"
     storage_account_name = "tfstatestoragecst"
