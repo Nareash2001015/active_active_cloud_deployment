@@ -5,15 +5,15 @@
 
 # Resource Group Outputs
 output "location" {
-  value = azurerm_resource_group.aks_rg.location
+  value = azurerm_resource_group.resource_group.location
 }
 
 output "resource_group_id" {
-  value = azurerm_resource_group.aks_rg.id
+  value = azurerm_resource_group.resource_group.id
 }
 
 output "resource_group_name" {
-  value = azurerm_resource_group.aks_rg.name
+  value = azurerm_resource_group.resource_group.name
 }
 
 # Azure AKS Versions Datasource
