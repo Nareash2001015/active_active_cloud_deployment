@@ -14,7 +14,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     enable_auto_scaling  = true
     max_count            = 6
     min_count            = 3
-    os_disk_size_gb      = 30
+    os_disk_size_gb      = 128
     type                 = "VirtualMachineScaleSets"
     node_labels = {
       "nodepool-type" = "system"
