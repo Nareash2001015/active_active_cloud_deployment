@@ -37,7 +37,7 @@ public class ServiceTest {
 
 
     @Test
-    public void givenDisableUsingJVMProperty_whenByPassCertificationVerification_thenSuccessHttpResponse() {
+    public void clentRegister() {
         try {
             SSLContext sslContext = SSLContext.getInstance("TLS"); // or "SSL" as per your requirement
             sslContext.init(null, MOCK_TRUST_MANAGER, new SecureRandom());
